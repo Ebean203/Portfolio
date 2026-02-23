@@ -1,11 +1,11 @@
 // api/chat.js — Vercel Serverless Function
-// Bridges the portfolio chatbot UI to Google Gemini API.
+// Bridges the portfolio chatbot UI to Groq API.
 // The API key is stored safely in Vercel environment variables (never in client code).
 
-const GEMINI_API_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL   = 'llama-3.3-70b-versatile';
 
-// ── System prompt: grounds Gemini in Rey's profile ──
+// ── System prompt: grounds the AI in Rey's profile ──
 const SYSTEM_PROMPT = `
 You are Rey Tacandong Jr.'s personal portfolio AI assistant. Your job is to answer questions
 about Rey in a friendly, professional, and concise manner. Only answer questions related to
@@ -91,45 +91,37 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Please provide a message.' });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ error: 'AI service is not configured yet.' });
   }
 
   try {
-    const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
+    const response = await fetch(GROQ_API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+      },
       body: JSON.stringify({
-        contents: [
-          {
-            role: 'user',
-            parts: [
-              {
-                text: `${SYSTEM_PROMPT}\n\nUser question: ${message.trim()}`,
-              },
-            ],
-          },
+        model: GROQ_MODEL,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user',   content: message.trim() },
         ],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 512,
-        },
-        safetySettings: [
-          { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-        ],
+        temperature: 0.7,
+        max_tokens: 512,
       }),
     });
 
     if (!response.ok) {
       const errData = await response.json().catch(() => ({}));
-      console.error('Gemini API error:', errData);
+      console.error('Groq API error:', errData);
       return res.status(502).json({ error: 'AI service returned an error. Please try again.' });
     }
 
-    const data     = await response.json();
-    const reply    = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    const data  = await response.json();
+    const reply = data?.choices?.[0]?.message?.content;
 
     if (!reply) {
       return res.status(502).json({ error: 'No response from AI. Please try again.' });
