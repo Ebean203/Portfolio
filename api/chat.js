@@ -3,7 +3,7 @@
 // The API key is stored safely in Vercel environment variables (never in client code).
 
 const GEMINI_API_URL =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
 // ── System prompt: grounds Gemini in Rey's profile ──
 const SYSTEM_PROMPT = `
