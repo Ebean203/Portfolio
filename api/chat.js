@@ -79,7 +79,7 @@ HOW TO CONTACT REY:
 Respond in 1–4 sentences max unless a detailed question warrants more. Be warm, professional, and helpful.
 `.trim();
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed.' });
