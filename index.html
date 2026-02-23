@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rey Tacandong Jr. | Junior Developer</title>
+  <meta name="description" content="Portfolio of Rey Tacandong Jr. — Junior Full-Stack Developer specializing in .NET, PHP, and modern web technologies." />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dark">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Rey<span class="accent">.</span>dev</a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-title">
+        Hi, I'm <span class="accent gradient-text">Rey Tacandong Jr.</span>
+      </h1>
+      <p class="hero-subtitle">
+        <span class="typed-text" id="typedText"></span><span class="cursor">|</span>
+      </p>
+      <p class="hero-bio">
+        A passionate Junior Full-Stack Developer building reliable, clean, and user-focused systems.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-code"></i> View Projects
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-envelope"></i> Get In Touch
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/Ebean203" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:tacandongrey@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-image" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+      <div class="hero-img-wrapper">
+        <img src="images/profile.jpeg.jpg" alt="Rey Tacandong Jr." class="profile-img" />
+        <div class="hero-img-ring"></div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-down" aria-label="Scroll down">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Get to know me</span>
+        <h2 class="section-title">About <span class="accent">Me</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image" data-aos="fade-right" data-aos-duration="800">
+          <div class="about-img-wrapper">
+            <img src="images/profile.jpeg.jpg" alt="Rey Tacandong Jr." />
+            <div class="about-img-badge">
+              <i class="fas fa-code"></i>
+              <div>
+                <strong>Junior</strong>
+                <span>Developer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-content" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+          <h3>Junior Developer crafting practical solutions</h3>
+          <p>
+            I am highly organized, detail-oriented, and possess excellent time-management skills.
+            Currently a <strong>B.S. Information Technology</strong> student at Capitol University with
+            hands-on experience in full-stack system development using <strong>.NET 10</strong> and
+            <strong>PHP / Laravel</strong>, alongside technical data annotation work.
+          </p>
+          <p>
+            I'm committed to providing top-notch technical support and adapting quickly to new systems.
+            I enjoy building reliable backend logic as much as crafting clean, responsive frontends.
+            I also leverage <strong>AI-assisted development</strong> — using
+            <strong>GitHub Copilot</strong> daily to accelerate coding, catch bugs early, and write
+            cleaner, more consistent code across projects.
+          </p>
+          <div class="about-info">
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt accent"></i>
+              <span>Lagonglong, Misamis Oriental</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope accent"></i>
+              <a href="mailto:tacandongrey@gmail.com">tacandongrey@gmail.com</a>
+            </div>
+            <div class="info-item">
+              <i class="fab fa-github accent"></i>
+              <a href="https://github.com/Ebean203" target="_blank" rel="noopener">github.com/Ebean203</a>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-graduation-cap accent"></i>
+              <span>B.S. Information Technology (2026)</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem; display:inline-flex;">
+            <i class="fas fa-paper-plane"></i> Let's Talk
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I work with</span>
+        <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="skill-card-header">
+            <i class="fas fa-server skill-icon accent"></i>
+            <h3>Back-End</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">.NET 10 (C# 14)</span>
+            <span class="tag">PHP 7.4+</span>
+            <span class="tag">Laravel 12</span>
+            <span class="tag">Entity Framework Core</span>
+            <span class="tag">Blazor Server</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Eloquent ORM</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="skill-card-header">
+            <i class="fas fa-desktop skill-icon accent"></i>
+            <h3>Front-End</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">HTML5 &amp; CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">jQuery</span>
+            <span class="tag">Bootstrap 5</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Chart.js</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="skill-card-header">
+            <i class="fas fa-database skill-icon accent"></i>
+            <h3>Databases</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">SQL Server</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">MariaDB</span>
+            <span class="tag">EF Core Migrations</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="240">
+          <div class="skill-card-header">
+            <i class="fas fa-tools skill-icon accent"></i>
+            <h3>Tools &amp; Core</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">Git &amp; GitHub</span>
+            <span class="tag tag-accent">GitHub Copilot</span>
+            <span class="tag">XAMPP</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Visual Studio</span>
+            <span class="tag">Composer</span>
+            <span class="tag">Data Annotation</span>
+            <span class="tag">Problem-Solving</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I've built</span>
+        <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="project-preview" onclick="openLightbox('images/LagonglongFARMS/LagFARMS.webp', 'Lagonglong FARMS')">
+            <img src="images/LagonglongFARMS/LagFARMS.webp" alt="Lagonglong FARMS screenshot" class="project-preview-img" loading="lazy" />
+            <div class="preview-overlay"><i class="fas fa-expand"></i> View</div>
+          </div>
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fas fa-seedling"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/Ebean203/Agriculture-System" target="_blank" rel="noopener" title="View on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Lagonglong FARMS</h3>
+          <p class="project-desc">
+            A full-stack farm management system for the Lagonglong Municipal Agriculture Office (MAO).
+            Features 9 modules: farmer registry, yield monitoring, inventory management, input distribution
+            with visitation scheduling, analytics dashboard with interactive charts, activity logging, PDF
+            report generation, real-time notifications, and role-based access control.
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-accent">PHP 7.4</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Bootstrap 5</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Chart.js</span>
+            <span class="tag">jQuery</span>
+            <span class="tag">XAMPP</span>
+          </div>
+          <div class="project-role">
+            <i class="fas fa-user-cog accent"></i> Lead Developer — Capstone Project
+          </div>
+        </div>
+
+        <!-- Project 2: HLM Pharma -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-preview project-carousel" id="hlmCarousel">
+            <img src="images/HLM/Dashboard.webp"      alt="HLM Dashboard"       class="project-preview-img carousel-img active" loading="lazy" onclick="openLightbox(this.src, 'HLM Pharma — Dashboard')" />
+            <img src="images/HLM/Asset.webp"          alt="HLM Asset Management" class="project-preview-img carousel-img"        loading="lazy" onclick="openLightbox(this.src, 'HLM Pharma — Asset Management')" />
+            <img src="images/HLM/HLM_employees.webp" alt="HLM Employees"        class="project-preview-img carousel-img"        loading="lazy" onclick="openLightbox(this.src, 'HLM Pharma — Employees')" />
+            <div class="carousel-dots">
+              <span class="dot active" data-carousel="hlmCarousel" data-index="0"></span>
+              <span class="dot"        data-carousel="hlmCarousel" data-index="1"></span>
+              <span class="dot"        data-carousel="hlmCarousel" data-index="2"></span>
+            </div>
+          </div>
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fas fa-pills"></i></div>
+            <div class="project-links">
+              <span class="project-private-label"><i class="fas fa-lock"></i> Private</span>
+            </div>
+          </div>
+          <h3 class="project-title">Asset Disposal &amp; Restoration System</h3>
+          <p class="project-desc">
+            Engineered a snapshot-based asset lifecycle system for HLM Pharma Inc. during internship.
+            Preserves complex employee/branch assignment history across asset disposals, with full audit
+            trails and rigorous business rule enforcement at both UI and server layers.
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-accent">Blazor Server</span>
+            <span class="tag">.NET 10</span>
+            <span class="tag">EF Core</span>
+            <span class="tag">SQL Server</span>
+          </div>
+          <div class="project-role">
+            <i class="fas fa-user-cog accent"></i> Full-Stack Developer — Internship
+          </div>
+        </div>
+
+        <!-- Project 3: Agriculture System Laravel -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-preview" onclick="openLightbox('images/LagonglongFARMS/LagFARMS.webp', 'Agriculture System — Laravel')">
+            <img src="images/LagonglongFARMS/LagFARMS.webp" alt="Agriculture System Laravel screenshot" class="project-preview-img" loading="lazy" />
+            <div class="preview-overlay"><i class="fas fa-expand"></i> View</div>
+          </div>
+          <div class="project-card-top">
+            <div class="project-icon"><i class="fas fa-leaf"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/Ebean203/Agriculture-System-Laravel" target="_blank" rel="noopener" title="View on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Agriculture System — Laravel</h3>
+          <p class="project-desc">
+            A full MVC rewrite of Lagonglong FARMS using Laravel 12. Implements Eloquent ORM with
+            proper model relationships, Blade templating, Laravel Breeze authentication, PDF generation
+            via DomPDF, geo-tagging, AJAX-powered modals, Vite asset bundling, and a
+            comprehensive reporting engine with 8 printable report templates.
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-accent">Laravel 12</span>
+            <span class="tag">Blade</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Tailwind CSS</span>
+            <span class="tag">Alpine.js</span>
+            <span class="tag">Chart.js</span>
+            <span class="tag">Vite</span>
+          </div>
+          <div class="project-role">
+            <i class="fas fa-user-cog accent"></i> Solo Developer — MVC Migration
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Where I've worked</span>
+        <h2 class="section-title">Work <span class="accent">Experience</span></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Full-Stack Developer <span class="accent">(Intern)</span></h3>
+                <p class="timeline-company"><i class="fas fa-building"></i> HLM Pharma Inc.</p>
+              </div>
+              <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Nov 2025 – Mar 2026</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Engineered a snapshot-based disposal and restoration system using Blazor Server (.NET 10) and SQL Server.</li>
+              <li>Implemented EF Core migrations to preserve complex assignment contexts (employee/branch history) across asset lifecycles.</li>
+              <li>Enforced rigorous business rules and audit trails at both UI and server layers to ensure data consistency.</li>
+              <li>Resolved complex data display issues for disposed items through fallback lookup architectures.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Freelance Data Annotator</h3>
+                <p class="timeline-company"><i class="fas fa-building"></i> Remotask</p>
+              </div>
+              <span class="timeline-date"><i class="fas fa-calendar-alt"></i> 2021 – 2022</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Performed high-precision data labeling and classification as a tasker and reviewer for technical projects (BEE LSS 320, Zodiac Ego Road).</li>
+              <li>Managed complex datasets independently, ensuring 100% accuracy and strict adherence to project requirements and deadlines.</li>
+              <li>Maintained accessible, well-organized datasets for future reference across project iterations.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EDUCATION ===================== -->
+  <section id="education" class="section education">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">My background</span>
+        <h2 class="section-title">Edu<span class="accent">cation</span></h2>
+      </div>
+      <div class="education-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="edu-content">
+          <h3>Bachelor of Science in Information Technology</h3>
+          <p class="edu-school"><i class="fas fa-university"></i> Capitol University</p>
+          <p class="edu-location"><i class="fas fa-map-marker-alt"></i> Cagayan de Oro City, Misamis Oriental</p>
+          <span class="edu-date"><i class="fas fa-calendar-alt"></i> 2022 – 2026</span>
+        </div>
+        <div class="edu-badge">
+          <i class="fas fa-award"></i> Graduating 2026
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Say hello</span>
+        <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+      </div>
+      <div class="contact-wrapper" data-aos="fade-up" data-aos-delay="50">
+        <p class="contact-subtitle">
+          I'm currently open to junior developer opportunities. Whether you have a question,
+          a project idea, or just want to say hi — my inbox is always open!
+        </p>
+        <div class="contact-actions">
+          <a href="mailto:tacandongrey@gmail.com" class="btn btn-primary btn-large">
+            <i class="fas fa-envelope"></i> Send Me an Email
+          </a>
+          <a href="https://github.com/Ebean203" target="_blank" rel="noopener" class="btn btn-outline btn-large">
+            <i class="fab fa-github"></i> View My GitHub
+          </a>
+        </div>
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <i class="fas fa-envelope accent"></i>
+            <a href="mailto:tacandongrey@gmail.com">tacandongrey@gmail.com</a>
+          </div>
+          <div class="contact-detail-item">
+            <i class="fas fa-map-marker-alt accent"></i>
+            <span>Lagonglong, Misamis Oriental, Philippines</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-name">Rey<span class="accent">.</span>dev</p>
+        <p class="footer-copy">© 2026 Rey Tacandong Jr. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="https://github.com/Ebean203" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:tacandongrey@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== CHATBOT ===================== -->
+  <div class="chat-fab" id="chatFab" title="Chat with Rey's AI Assistant">
+    <i class="fas fa-comments" id="chatFabIcon"></i>
+    <span class="chat-fab-badge">AI</span>
+  </div>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+        <div>
+          <p class="chat-header-name">Rey's AI Assistant</p>
+          <p class="chat-header-status"><span class="status-dot"></span> Online</p>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <div class="chat-bubble">
+          👋 Hi! I'm Rey's AI assistant. Ask me anything about his skills, experience, projects, or how to get in touch!
+        </div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input
+        type="text"
+        class="chat-input"
+        id="chatInput"
+        placeholder="Ask about Rey's skills, experience…"
+        autocomplete="off"
+        maxlength="300"
+      />
+      <button class="chat-send" id="chatSend" aria-label="Send message">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <img src="" alt="" id="lightboxImg" />
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

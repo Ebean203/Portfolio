@@ -1,0 +1,14 @@
+# Dependencies (if any tools are added later)
+node_modules/
+
+# Environment variables — NEVER commit your API key
+.env
+.env.local
+.env.production
+
+# Vercel
+.vercel
+
+# OS files
+.DS_Store
+Thumbs.db
