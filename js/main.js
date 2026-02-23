@@ -77,7 +77,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ── 6. TYPED TEXT EFFECT ── */
-const phrases   = ['Full-Stack Developer', '.NET & PHP Developer', 'Problem Solver', 'Junior Developer'];
+const phrases   = ['Junior Developer', '.NET & PHP Developer', 'Problem Solver', 'Web Developer'];
 const typedEl   = document.getElementById('typedText');
 let phraseIndex = 0;
 let charIndex   = 0;

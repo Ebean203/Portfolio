@@ -15,7 +15,7 @@ If asked something unrelated, politely redirect the conversation back to Rey's p
 Here is Rey's full profile:
 
 NAME: Rey C. Tacandong Jr.
-TITLE: Junior Full-Stack Developer
+TITLE: Junior Developer
 LOCATION: Lagonglong, Misamis Oriental, Philippines
 EMAIL: tacandongrey@gmail.com
 GITHUB: https://github.com/Ebean203
