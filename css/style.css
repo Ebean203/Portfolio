@@ -389,6 +389,7 @@ img {
   max-width: 480px;
   margin-bottom: 2rem;
   line-height: 1.8;
+  text-align: justify;
 }
 
 .hero-actions {
@@ -522,6 +523,7 @@ img {
   color: var(--text-secondary);
   margin-bottom: 1rem;
   font-size: 0.97rem;
+  text-align: justify;
 }
 .about-content strong { color: var(--accent); font-weight: 600; }
 
@@ -690,6 +692,7 @@ img {
   color: var(--text-secondary);
   line-height: 1.7;
   flex: 1;
+  text-align: justify;
 }
 
 .project-tags {
@@ -1010,6 +1013,7 @@ img {
   padding-left: 1rem;
   position: relative;
   line-height: 1.65;
+  text-align: justify;
 }
 .timeline-bullets li::before {
   content: '▸';
@@ -1239,7 +1243,7 @@ img {
   right: 1.75rem;
   z-index: 900;
   width: 360px;
-  max-height: 520px;
+  max-height: 680px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
