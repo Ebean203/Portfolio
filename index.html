@@ -239,9 +239,9 @@
 
         <!-- Project 1 -->
         <div class="project-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="project-preview" onclick="openLightbox('images/LagonglongFARMS/LagFARMS.webp', 'Lagonglong FARMS')">
+          <div class="project-preview" onclick="openGallery('lagFarms', 0)">
             <img src="images/LagonglongFARMS/LagFARMS.webp" alt="Lagonglong FARMS screenshot" class="project-preview-img" loading="lazy" />
-            <div class="preview-overlay"><i class="fas fa-expand"></i> View</div>
+            <div class="preview-overlay"><i class="fas fa-images"></i> View Gallery</div>
           </div>
           <div class="project-card-top">
             <div class="project-icon"><i class="fas fa-seedling"></i></div>
@@ -275,14 +275,15 @@
         <!-- Project 2: HLM Pharma -->
         <div class="project-card" data-aos="fade-up" data-aos-delay="100">
           <div class="project-preview project-carousel" id="hlmCarousel">
-            <img src="images/HLM/Dashboard.webp"      alt="HLM Dashboard"       class="project-preview-img carousel-img active" loading="lazy" onclick="openLightbox(this.src, 'HLM Pharma — Dashboard')" />
-            <img src="images/HLM/Asset.webp"          alt="HLM Asset Management" class="project-preview-img carousel-img"        loading="lazy" onclick="openLightbox(this.src, 'HLM Pharma — Asset Management')" />
-            <img src="images/HLM/HLM_employees.webp" alt="HLM Employees"        class="project-preview-img carousel-img"        loading="lazy" onclick="openLightbox(this.src, 'HLM Pharma — Employees')" />
+            <img src="images/HLM/Dashboard.webp"      alt="HLM Dashboard"       class="project-preview-img carousel-img active" loading="lazy" />
+            <img src="images/HLM/Asset.webp"          alt="HLM Asset Management" class="project-preview-img carousel-img"        loading="lazy" />
+            <img src="images/HLM/HLM_employees.webp" alt="HLM Employees"        class="project-preview-img carousel-img"        loading="lazy" />
             <div class="carousel-dots">
               <span class="dot active" data-carousel="hlmCarousel" data-index="0"></span>
               <span class="dot"        data-carousel="hlmCarousel" data-index="1"></span>
               <span class="dot"        data-carousel="hlmCarousel" data-index="2"></span>
             </div>
+            <div class="preview-overlay carousel-gallery-trigger" onclick="openGallery('hlm', 0)"><i class="fas fa-images"></i> View Gallery</div>
           </div>
           <div class="project-card-top">
             <div class="project-icon"><i class="fas fa-pills"></i></div>
@@ -313,9 +314,9 @@
 
         <!-- Project 3: Agriculture System Laravel -->
         <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="project-preview" onclick="openLightbox('images/LagonglongFARMS/LagFARMS.webp', 'Agriculture System — Laravel')">
+          <div class="project-preview" onclick="openGallery('agriLaravel', 0)">
             <img src="images/LagonglongFARMS/LagFARMS.webp" alt="Agriculture System Laravel screenshot" class="project-preview-img" loading="lazy" />
-            <div class="preview-overlay"><i class="fas fa-expand"></i> View</div>
+            <div class="preview-overlay"><i class="fas fa-images"></i> View Gallery</div>
           </div>
           <div class="project-card-top">
             <div class="project-icon"><i class="fas fa-leaf"></i></div>
@@ -380,6 +381,25 @@
         </div>
 
         <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-role">Lead Developer <span class="accent">(Capstone)</span></h3>
+                <p class="timeline-company"><i class="fas fa-seedling"></i> Lagonglong Municipal Agriculture Office (MAO)</p>
+              </div>
+              <span class="timeline-date"><i class="fas fa-calendar-alt"></i> 2024 – 2026</span>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Architected and delivered <strong>Lagonglong FARMS</strong>, a full-stack farm management system with 9 modules covering farmer registry, yield monitoring, inventory, and input distribution.</li>
+              <li>Built an analytics dashboard with interactive Chart.js visualisations and a PDF report engine generating 8 printable report templates via TCPDF.</li>
+              <li>Implemented role-based access control, real-time notifications, activity logging, and geo-tagging using PHP 7.4, MySQL, Bootstrap 5, Tailwind CSS, and jQuery on XAMPP.</li>
+              <li>Rewrote the entire system in <strong>Laravel 12</strong> applying Eloquent ORM, Blade templating, Laravel Breeze auth, DomPDF, and Vite asset bundling.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-header">
@@ -518,10 +538,15 @@
 
   <!-- ===================== LIGHTBOX ===================== -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <button class="lightbox-close" aria-label="Close"><i class="fas fa-times"></i></button>
+    <button class="lightbox-close" aria-label="Close" onclick="event.stopPropagation(); closeLightbox()"><i class="fas fa-times"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image" onclick="event.stopPropagation(); galleryNav(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image" onclick="event.stopPropagation(); galleryNav(1)"><i class="fas fa-chevron-right"></i></button>
     <div class="lightbox-inner" onclick="event.stopPropagation()">
       <img src="" alt="" id="lightboxImg" />
-      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <div class="lightbox-footer">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+      </div>
     </div>
   </div>
 
