@@ -6,6 +6,9 @@
   <title>Rey Tacandong Jr. | Junior Developer</title>
   <meta name="description" content="Portfolio of Rey Tacandong Jr. — Junior Developer specializing in .NET, PHP, and modern web technologies." />
 
+  <!-- Favicon (generated via canvas for cross-browser support) -->
+  <link rel="icon" id="favicon" type="image/png" href=""/>
+
   <!-- AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <!-- Font Awesome -->
@@ -18,6 +21,9 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="dark">
+
+  <!-- Matrix Rain Background -->
+  <canvas id="matrix-rain"></canvas>
 
   <!-- ===================== NAVBAR ===================== -->
   <nav class="navbar" id="navbar">
@@ -554,5 +560,61 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <!-- Main JS -->
   <script src="js/main.js"></script>
+  <!-- Favicon Generator -->
+  <script>
+    (function () {
+      const c  = document.createElement('canvas');
+      c.width  = 64;
+      c.height = 64;
+      const ctx = c.getContext('2d');
+
+      // Background rounded rect
+      const r = 14;
+      ctx.beginPath();
+      ctx.moveTo(r, 0);
+      ctx.lineTo(64 - r, 0);
+      ctx.quadraticCurveTo(64, 0, 64, r);
+      ctx.lineTo(64, 64 - r);
+      ctx.quadraticCurveTo(64, 64, 64 - r, 64);
+      ctx.lineTo(r, 64);
+      ctx.quadraticCurveTo(0, 64, 0, 64 - r);
+      ctx.lineTo(0, r);
+      ctx.quadraticCurveTo(0, 0, r, 0);
+      ctx.closePath();
+      const bg = ctx.createLinearGradient(0, 0, 64, 64);
+      bg.addColorStop(0, '#0a0e1a');
+      bg.addColorStop(1, '#111827');
+      ctx.fillStyle = bg;
+      ctx.fill();
+
+      // Cyan border
+      ctx.strokeStyle = 'rgba(6,182,212,0.75)';
+      ctx.lineWidth   = 2.5;
+      ctx.stroke();
+
+      // Glow
+      ctx.save();
+      ctx.shadowColor = '#06b6d4';
+      ctx.shadowBlur  = 6;
+
+      // "R" in white
+      ctx.font      = 'bold 30px Inter, Arial, sans-serif';
+      ctx.fillStyle = '#e2e8f0';
+      ctx.fillText('R', 7, 44);
+
+      // "T" in cyan
+      ctx.fillStyle = '#06b6d4';
+      ctx.fillText('T', 33, 44);
+      ctx.restore();
+
+      // Accent dot
+      ctx.beginPath();
+      ctx.arc(57, 46, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#06b6d4';
+      ctx.fill();
+
+      document.getElementById('favicon').href = c.toDataURL('image/png');
+    })();
+  </script>
 </body>
 </html>

@@ -2,6 +2,119 @@
    main.js — Portfolio Interactivity + AI Chatbot
 ===================================================== */
 
+/* ── 0. HACKER TERMINAL CODE STREAM BACKGROUND ── */
+(function () {
+  const canvas = document.getElementById('matrix-rain');
+  const ctx    = canvas.getContext('2d');
+
+  // Rich pool of hacker-terminal-looking characters & snippets
+  const POOL = [
+    '0','1','0','1','0','1',          // more 0/1 weight
+    'A','B','C','D','E','F',          // hex
+    '{','}','[',']','(',')','<','>',
+    ';',':','=','+','-','*','/',
+    '\\','|','&','$','#','@','!','~','^',
+    'if','fn','0x','>>','<<','&&','||','!=','==',
+    'int','var','let','for','ret',
+    '01','10','00','11',
+    'x86','404','200','null','true',
+  ];
+
+  const FONT_SIZE  = 13;
+  const LINE_H     = FONT_SIZE * 1.4;
+
+  let cols = [], W, H;
+
+  function randItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+  function rand(a, b)    { return Math.random() * (b - a) + a; }
+
+  function makeCol(x) {
+    const bright = Math.random() < 0.15; // ~15% columns are highlighted
+    return {
+      x,
+      y:     rand(-H, 0),
+      speed: bright ? rand(0.6, 1.1) : rand(1.2, 2.8),
+      len:   Math.floor(rand(8, 28)),
+      bright,
+      chars: [],
+      mutateTimer: 0,
+    };
+  }
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    cols = [];
+    const step = FONT_SIZE + 2;
+    for (let x = 4; x < W; x += step) cols.push(makeCol(x));
+  }
+
+  function draw() {
+    // Translucent dark overlay for trail effect
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.07)';
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.font = `${FONT_SIZE}px "Fira Code", "Courier New", monospace`;
+
+    cols.forEach(col => {
+      // Occasionally mutate characters for a "live feed" look
+      col.mutateTimer++;
+      if (col.mutateTimer > 4) {
+        col.mutateTimer = 0;
+        // shuffle a random char in the trail
+        const idx = Math.floor(Math.random() * col.chars.length);
+        if (col.chars[idx] !== undefined) col.chars[idx] = randItem(POOL);
+      }
+
+      for (let j = 0; j < col.len; j++) {
+        const cy = col.y - j * LINE_H;
+        if (cy < -LINE_H || cy > H + LINE_H) continue;
+
+        // Ensure char slot exists
+        if (col.chars[j] === undefined) col.chars[j] = randItem(POOL);
+
+        const frac = 1 - j / col.len; // 1 at head, 0 at tail
+
+        if (j === 0) {
+          // Head character — bright white/cyan glow
+          ctx.save();
+          ctx.shadowBlur  = col.bright ? 20 : 12;
+          ctx.shadowColor = '#06b6d4';
+          ctx.fillStyle   = col.bright ? '#e0f9ff' : '#a5f3fc';
+          ctx.fillText(col.chars[0], col.x, col.y);
+          ctx.restore();
+        } else if (col.bright) {
+          // Bright column — vivid cyan trail
+          const b = Math.floor(180 + frac * 75);
+          ctx.fillStyle = `rgba(6, ${Math.floor(frac * 182)}, ${b}, ${frac * 0.9})`;
+          ctx.shadowBlur = 0;
+          ctx.fillText(col.chars[j], col.x, cy);
+        } else {
+          // Normal column — muted blue/cyan
+          const r = Math.floor(frac * 30);
+          const g = Math.floor(frac * 140 + 20);
+          const b = Math.floor(frac * 180 + 30);
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${frac * 0.8})`;
+          ctx.fillText(col.chars[j], col.x, cy);
+        }
+      }
+
+      col.y += col.speed;
+
+      // Reset column when head has gone past the bottom
+      if (col.y - col.len * LINE_H > H) {
+        const nc  = makeCol(col.x);
+        nc.y      = rand(-H * 0.6, -LINE_H);
+        Object.assign(col, nc);
+      }
+    });
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  requestAnimationFrame(function loop() { draw(); requestAnimationFrame(loop); });
+})();
+
 /* ── 1. AOS INIT ── */
 AOS.init({ once: true, offset: 60, duration: 750 });
 
