@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Background gradient matching --bg / --bg-secondary -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <!-- Cyan glow filter for the text -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Card background with rounded corners -->
+  <rect width="64" height="64" rx="14" ry="14" fill="url(#bgGrad)"/>
+
+  <!-- Cyan accent border ring -->
+  <rect width="64" height="64" rx="14" ry="14"
+        fill="none"
+        stroke="#06b6d4"
+        stroke-width="2.5"
+        opacity="0.75"/>
+
+  <!-- Subtle inner top highlight line -->
+  <rect x="10" y="4" width="44" height="2" rx="1"
+        fill="#06b6d4" opacity="0.18"/>
+
+  <!-- "R" letter -->
+  <text
+    x="10" y="44"
+    font-family="Inter, Arial Black, sans-serif"
+    font-weight="800"
+    font-size="30"
+    fill="#e2e8f0"
+    filter="url(#glow)"
+    letter-spacing="-1">R</text>
+
+  <!-- "T" letter in accent cyan -->
+  <text
+    x="34" y="44"
+    font-family="Inter, Arial Black, sans-serif"
+    font-weight="800"
+    font-size="30"
+    fill="#06b6d4"
+    filter="url(#glow)"
+    letter-spacing="-1">T</text>
+
+  <!-- Accent dot (matches nav-logo "Rey.dev" style) -->
+  <circle cx="56" cy="46" r="3.5" fill="#06b6d4" opacity="0.95"/>
+</svg>
