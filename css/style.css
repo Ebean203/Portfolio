@@ -775,6 +775,11 @@ img {
 }
 .project-carousel .carousel-img.active { opacity: 1; position: relative; }
 
+/* Gallery trigger overlay sits above images (z-index 1) but below dots (z-index 2) */
+.project-carousel .preview-overlay {
+  z-index: 1;
+}
+
 .carousel-dots {
   position: absolute;
   bottom: 8px;
@@ -856,6 +861,41 @@ img {
   border-radius: 12px;
   object-fit: contain;
   box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  will-change: opacity, transform;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10;
+}
+.lightbox-nav:hover {
+  background: rgba(6,182,212,0.35);
+  transform: translateY(-50%) scale(1.08);
+}
+.lightbox-prev { left: 1.25rem; }
+.lightbox-next { right: 1.25rem; }
+
+.lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .lightbox-caption {
@@ -863,6 +903,14 @@ img {
   font-size: 0.85rem;
   text-align: center;
   font-family: 'Fira Code', monospace;
+  margin: 0;
+}
+
+.lightbox-counter {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.78rem;
+  font-family: 'Fira Code', monospace;
+  white-space: nowrap;
 }
 
 /* =====================================================

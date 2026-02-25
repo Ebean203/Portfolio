@@ -282,17 +282,152 @@ function initCarousel(carouselId) {
 
 initCarousel('hlmCarousel');
 
-/* ── 10. LIGHTBOX ── */
+/* ── 10. LIGHTBOX + GALLERY ── */
+
+/* Gallery data — one entry per project */
+const galleries = {
+  hlm: [
+    { src: 'images/HLM/login.webp',          caption: 'HLM Pharma — Login' },
+    { src: 'images/HLM/Dashboard.webp',       caption: 'HLM Pharma — Dashboard' },
+    { src: 'images/HLM/Asset.webp',           caption: 'HLM Pharma — Asset Management' },
+    { src: 'images/HLM/assetdetails.webp',    caption: 'HLM Pharma — Asset Details' },
+    { src: 'images/HLM/AssetRegister.webp',   caption: 'HLM Pharma — Asset Register' },
+    { src: 'images/HLM/assignments.webp',     caption: 'HLM Pharma — Assignments' },
+    { src: 'images/HLM/HLM_employees.webp',   caption: 'HLM Pharma — Employees' },
+    { src: 'images/HLM/accessories.webp',     caption: 'HLM Pharma — Accessories' },
+    { src: 'images/HLM/Supplies.webp',        caption: 'HLM Pharma — Supplies' },
+    { src: 'images/HLM/SupplyRequest.webp',   caption: 'HLM Pharma — Supply Request' },
+    { src: 'images/HLM/Disposed.webp',        caption: 'HLM Pharma — Disposed Assets' },
+  ],
+  lagFarms: [
+    { src: 'images/LagonglongFARMS/login.webp',          caption: 'Lagonglong FARMS — Login' },
+    { src: 'images/LagonglongFARMS/LagFARMS.webp',        caption: 'Lagonglong FARMS — Dashboard' },
+    { src: 'images/LagonglongFARMS/Farmers.webp',         caption: 'Lagonglong FARMS — Farmer Registry' },
+    { src: 'images/LagonglongFARMS/registerFarmer.webp',  caption: 'Lagonglong FARMS — Register Farmer' },
+    { src: 'images/LagonglongFARMS/RSBSA.webp',           caption: 'Lagonglong FARMS — RSBSA' },
+    { src: 'images/LagonglongFARMS/NCFRS.webp',           caption: 'Lagonglong FARMS — NCFRS' },
+    { src: 'images/LagonglongFARMS/FISHR.webp',           caption: 'Lagonglong FARMS — FISHR' },
+    { src: 'images/LagonglongFARMS/Boats.webp',           caption: 'Lagonglong FARMS — Boats' },
+    { src: 'images/LagonglongFARMS/Inventory.webp',       caption: 'Lagonglong FARMS — Inventory' },
+    { src: 'images/LagonglongFARMS/Distributions.webp',   caption: 'Lagonglong FARMS — Input Distributions' },
+    { src: 'images/LagonglongFARMS/Activities.webp',      caption: 'Lagonglong FARMS — Activities' },
+    { src: 'images/LagonglongFARMS/geotag.webp',          caption: 'Lagonglong FARMS — Geo-tagging' },
+    { src: 'images/LagonglongFARMS/analytics.webp',       caption: 'Lagonglong FARMS — Analytics' },
+    { src: 'images/LagonglongFARMS/Report.webp',          caption: 'Lagonglong FARMS — Reports' },
+    { src: 'images/LagonglongFARMS/samplereport.webp',    caption: 'Lagonglong FARMS — Sample Report' },
+  ],
+  agriLaravel: [
+    { src: 'images/LagonglongFARMS/login.webp',          caption: 'Agriculture System (Laravel) — Login' },
+    { src: 'images/LagonglongFARMS/LagFARMS.webp',        caption: 'Agriculture System (Laravel) — Dashboard' },
+    { src: 'images/LagonglongFARMS/Farmers.webp',         caption: 'Agriculture System (Laravel) — Farmer Registry' },
+    { src: 'images/LagonglongFARMS/registerFarmer.webp',  caption: 'Agriculture System (Laravel) — Register Farmer' },
+    { src: 'images/LagonglongFARMS/RSBSA.webp',           caption: 'Agriculture System (Laravel) — RSBSA' },
+    { src: 'images/LagonglongFARMS/NCFRS.webp',           caption: 'Agriculture System (Laravel) — NCFRS' },
+    { src: 'images/LagonglongFARMS/FISHR.webp',           caption: 'Agriculture System (Laravel) — FISHR' },
+    { src: 'images/LagonglongFARMS/Boats.webp',           caption: 'Agriculture System (Laravel) — Boats' },
+    { src: 'images/LagonglongFARMS/Inventory.webp',       caption: 'Agriculture System (Laravel) — Inventory' },
+    { src: 'images/LagonglongFARMS/Distributions.webp',   caption: 'Agriculture System (Laravel) — Input Distributions' },
+    { src: 'images/LagonglongFARMS/Activities.webp',      caption: 'Agriculture System (Laravel) — Activities' },
+    { src: 'images/LagonglongFARMS/geotag.webp',          caption: 'Agriculture System (Laravel) — Geo-tagging' },
+    { src: 'images/LagonglongFARMS/analytics.webp',       caption: 'Agriculture System (Laravel) — Analytics' },
+    { src: 'images/LagonglongFARMS/Report.webp',          caption: 'Agriculture System (Laravel) — Reports' },
+    { src: 'images/LagonglongFARMS/samplereport.webp',    caption: 'Agriculture System (Laravel) — Sample Report' },
+  ],
+};
+
 const lightbox        = document.getElementById('lightbox');
 const lightboxImg     = document.getElementById('lightboxImg');
 const lightboxCaption = document.getElementById('lightboxCaption');
+const lightboxCounter = document.getElementById('lightboxCounter');
+const lightboxPrev    = document.getElementById('lightboxPrev');
+const lightboxNext    = document.getElementById('lightboxNext');
 
-function openLightbox(src, caption) {
-  lightboxImg.src          = src;
-  lightboxImg.alt          = caption;
-  lightboxCaption.textContent = caption || '';
+let currentGallery    = [];
+let currentGalleryIdx = 0;
+
+/* Open gallery by key, starting at a given index */
+function openGallery(key, startIndex) {
+  currentGallery    = galleries[key] || [];
+  currentGalleryIdx = Math.max(0, Math.min(startIndex, currentGallery.length - 1));
+  renderLightboxFrame();
   lightbox.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+/* Fallback: wrap a single image as an ad-hoc gallery */
+function openLightbox(src, caption) {
+  currentGallery    = [{ src, caption }];
+  currentGalleryIdx = 0;
+  renderLightboxFrame();
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateLightboxMeta() {
+  const item  = currentGallery[currentGalleryIdx];
+  const total = currentGallery.length;
+  lightboxCaption.textContent = item.caption;
+  if (total > 1) {
+    lightboxCounter.textContent = `${currentGalleryIdx + 1} / ${total}`;
+    lightboxPrev.style.display  = '';
+    lightboxNext.style.display  = '';
+  } else {
+    lightboxCounter.textContent = '';
+    lightboxPrev.style.display  = 'none';
+    lightboxNext.style.display  = 'none';
+  }
+}
+
+/* direction: 0 = no animation (first open), 1 = next, -1 = prev */
+function renderLightboxFrame(direction = 0) {
+  const item = currentGallery[currentGalleryIdx];
+  if (!item) return;
+
+  if (direction === 0) {
+    // Instant swap on first open
+    lightboxImg.style.transition = 'none';
+    lightboxImg.style.opacity    = '1';
+    lightboxImg.style.transform  = 'translateX(0) scale(1)';
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.caption;
+    updateLightboxMeta();
+    return;
+  }
+
+  // Step 1 — slide current image out
+  lightboxImg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+  lightboxImg.style.opacity    = '0';
+  lightboxImg.style.transform  = direction > 0
+    ? 'translateX(-40px) scale(0.96)'
+    : 'translateX(40px) scale(0.96)';
+
+  setTimeout(() => {
+    // Step 2 — snap new image in from opposite side (no transition)
+    lightboxImg.style.transition = 'none';
+    lightboxImg.style.opacity    = '0';
+    lightboxImg.style.transform  = direction > 0
+      ? 'translateX(40px) scale(0.96)'
+      : 'translateX(-40px) scale(0.96)';
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.caption;
+    updateLightboxMeta();
+
+    // Step 3 — animate into place
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        lightboxImg.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        lightboxImg.style.opacity    = '1';
+        lightboxImg.style.transform  = 'translateX(0) scale(1)';
+      });
+    });
+  }, 200);
+}
+
+function galleryNav(direction) {
+  const total = currentGallery.length;
+  if (total <= 1) return;
+  currentGalleryIdx = (currentGalleryIdx + direction + total) % total;
+  renderLightboxFrame(direction);
 }
 
 function closeLightbox() {
@@ -300,7 +435,21 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-// Close on Escape key
+/* Keyboard: Escape closes, arrow keys navigate */
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLightbox();
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape')     closeLightbox();
+  if (e.key === 'ArrowLeft')  galleryNav(-1);
+  if (e.key === 'ArrowRight') galleryNav(1);
 });
+
+/* Touch swipe support */
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+lightbox.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(dx) > 50) galleryNav(dx < 0 ? 1 : -1);
+}, { passive: true });
+
