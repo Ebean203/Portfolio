@@ -50,8 +50,9 @@
   }
 
   function draw() {
-    // Translucent dark overlay for trail effect
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.07)';
+    // Translucent overlay for trail effect — white in light mode, dark in dark mode
+    const isLight = document.documentElement.classList.contains('light');
+    ctx.fillStyle = isLight ? 'rgba(248, 250, 252, 0.22)' : 'rgba(0, 0, 0, 0.07)';
     ctx.fillRect(0, 0, W, H);
 
     ctx.font = `${FONT_SIZE}px "Fira Code", "Courier New", monospace`;
@@ -76,25 +77,39 @@
         const frac = 1 - j / col.len; // 1 at head, 0 at tail
 
         if (j === 0) {
-          // Head character — bright white/cyan glow
+          // Head character — bright glow
           ctx.save();
           ctx.shadowBlur  = col.bright ? 20 : 12;
           ctx.shadowColor = '#06b6d4';
-          ctx.fillStyle   = col.bright ? '#e0f9ff' : '#a5f3fc';
+          ctx.fillStyle   = isLight
+            ? (col.bright ? '#0e7490' : '#0891b2')   // dark teal for light bg
+            : (col.bright ? '#e0f9ff' : '#a5f3fc');  // bright cyan for dark bg
           ctx.fillText(col.chars[0], col.x, col.y);
           ctx.restore();
         } else if (col.bright) {
-          // Bright column — vivid cyan trail
-          const b = Math.floor(180 + frac * 75);
-          ctx.fillStyle = `rgba(6, ${Math.floor(frac * 182)}, ${b}, ${frac * 0.9})`;
+          // Bright column trail
+          if (isLight) {
+            const alpha = frac * 0.85;
+            ctx.fillStyle = `rgba(8, 145, 178, ${alpha})`;
+          } else {
+            const b = Math.floor(180 + frac * 75);
+            ctx.fillStyle = `rgba(6, ${Math.floor(frac * 182)}, ${b}, ${frac * 0.9})`;
+          }
           ctx.shadowBlur = 0;
           ctx.fillText(col.chars[j], col.x, cy);
         } else {
-          // Normal column — muted blue/cyan
-          const r = Math.floor(frac * 30);
-          const g = Math.floor(frac * 140 + 20);
-          const b = Math.floor(frac * 180 + 30);
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${frac * 0.8})`;
+          // Normal column trail
+          if (isLight) {
+            const r = Math.floor(10 + frac * 20);
+            const g = Math.floor(100 + frac * 80);
+            const b = Math.floor(120 + frac * 80);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${frac * 0.75})`;
+          } else {
+            const r = Math.floor(frac * 30);
+            const g = Math.floor(frac * 140 + 20);
+            const b = Math.floor(frac * 180 + 30);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${frac * 0.8})`;
+          }
           ctx.fillText(col.chars[j], col.x, cy);
         }
       }

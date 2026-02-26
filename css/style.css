@@ -72,7 +72,67 @@ body {
   transition: opacity 0.5s ease;
 }
 html.light #matrix-rain {
-  opacity: 0.07;
+  opacity: 0.25;
+}
+
+/* Light mode glass overrides for sections — very transparent so matrix shows */
+html.light .about,
+html.light .education,
+html.light .projects,
+html.light .skills,
+html.light .experience,
+html.light .contact {
+  background: rgba(248, 250, 252, 0.12);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Light mode footer */
+html.light .footer {
+  background: rgba(241, 245, 249, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(6, 182, 212, 0.25);
+}
+
+/* Light mode footer social icons — more visible */
+html.light .footer-socials a {
+  background: rgba(255, 255, 255, 0.80);
+  border-color: rgba(6, 182, 212, 0.30);
+  color: var(--text-secondary);
+}
+html.light .footer-copy {
+  color: var(--text-secondary);
+}
+
+/* Light mode — hero text visibility over matrix */
+/* Override gradient clip: text becomes invisible over light bgs */
+html.light .gradient-text {
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: none;
+}
+html.light .hero-title {
+  color: #0f172a;
+}
+html.light .hero-subtitle {
+  color: #0369a1;
+}
+/* Hero content gets a frosted white card so text always readable over matrix */
+html.light .hero-content {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 32px rgba(6, 182, 212, 0.08);
+  min-width: 0;
+  width: 100%;
+}
+html.light .hero-image {
+  filter: drop-shadow(0 8px 24px rgba(6,182,212,0.15));
 }
 
 /* Ensure all page content sits above the canvas */
@@ -381,6 +441,7 @@ img {
   line-height: 1.2;
   margin-bottom: 1rem;
   color: var(--text);
+  white-space: nowrap;
 }
 
 .gradient-text {
