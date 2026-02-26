@@ -495,7 +495,11 @@ img {
 /* =====================================================
    ABOUT
 ===================================================== */
-.about { background: var(--bg-secondary); }
+.about {
+  background: rgba(13, 17, 30, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
 
 .about-grid {
   display: grid;
@@ -634,7 +638,11 @@ img {
 /* =====================================================
    PROJECTS
 ===================================================== */
-.projects { background: var(--bg-secondary); }
+.projects {
+  background: rgba(13, 17, 30, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
 
 .projects-grid {
   display: grid;
@@ -1049,7 +1057,11 @@ img {
 /* =====================================================
    EDUCATION
 ===================================================== */
-.education { background: var(--bg-secondary); }
+.education {
+  background: rgba(13, 17, 30, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
 
 .education-card {
   max-width: 700px;
