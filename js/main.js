@@ -461,6 +461,9 @@ const galleries = {
     { src: 'images/LagonglongFARMS/Report.webp',          caption: 'Agriculture System (Laravel) — Reports' },
     { src: 'images/LagonglongFARMS/samplereport.webp',    caption: 'Agriculture System (Laravel) — Sample Report' },
   ],
+  webScraper: [
+    { src: 'images/WebScraper/Screenshot 2026-03-02 145908.webp', caption: 'Amazon Web Scraper — UI' },
+  ],
 };
 
 const lightbox        = document.getElementById('lightbox');
